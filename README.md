@@ -74,7 +74,7 @@ java 개발자 과정 Database 리포지토리
      [ORDER BY 정렬속성(들) ASC|DESC]
      [WITH ROLLUP]
     ``` 
-    - 기본 쿼리 학습 : [SQL](./day01/sql01_select기본.ㄴ비)
+    - 기본 쿼리 학습 : [SQL](./day01/sql01_select기본.sql)
         1. 기본 SELECT
         2. WHERE 조건절
         3. NULL(!)
@@ -84,5 +84,5 @@ java 개발자 과정 Database 리포지토리
 - 함수(내장함수)
     - 문자함수 : [SQL](./day01/sq02_함수.sql)
     - 숫자함수
-    
+
 ## 2일차
