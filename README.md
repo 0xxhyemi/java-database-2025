@@ -82,20 +82,20 @@ java 개발자 과정 Database 리포지토리
         5. 집합
 
 - 함수(내장함수)
-    - 문자함수 : [SQL](./day01/sq02_함수.sql)
+    - 문자함수 : [SQL](./day01/sql02_함수.sql)
 
 ## 2일차
 - 함수(계속)
-    - 문자함수 부터: [SQL](./day0２/sq0１_함수계속.sql)
+    - 문자함수 부터: [SQL](./day02/sql01_함수계속.sql)
     - 숫자함수
     - 날짜함수
     - 형변환함수
-－복수행함수 ： [SQL](./day0２/sq02_복수행함수.sql)
+－복수행함수 ： [SQL](./day02/sql02_복수행함수.sql)
     － 집계함수
-    － ＧＲＯＵＰ ＢＹ
-    － ＨＡＶＩＮＧ
-    －ＲＯＬＬＵＰ
-    － ＲＡＮＫ、 ＤＥＮＳＥ—ＲＡＮＫ、 ＲＯＷ—ＮＵＭＢＥＲ
+    － GROUP BY
+    － HAVING
+    －ROLLUP
+    －RANK, DENSE RANK, ROW NUMBER
 
 - 데이터베이스 타입형
     - **CHAR(n)** - 고정형 문자열, 최대 2000바이트
@@ -106,9 +106,63 @@ java 개발자 과정 Database 리포지토리
     - **NUMBER(p, s)** - 숫자값, p 전체자리수, s 소수점길이. 최대 22byte
     - INTEGER - 모든 데이터의 기준. 4byte, 정수를 담는 데이터형
     - FLOAT(p) - 실수형 타입, 최대 22byte
-    - DATE - 날짜타입
-    - ＊＊ＬＯＮＧ（ｎ）＊＊ - 가변길이문자열, 최대 2G바이트
+    - **DATE**- 날짜타입
+    - **LONG(n)** - 가변길이문자열, 최대 2G바이트
     - LONG RAW(n) - 원시이진 데이터, 최대 2G바이트
     - CLOB - 대용량 텍스트 데이터타입, 최대 4G
     - BLOB - 대용량 바이너리 데이터타입, 최대 4G
     - BFILE - 외부파일에 저장된 데이터, 4G
+
+    ## 3일차
+    - JOIN: [SQL](./Day03/sql03_조인기본.sql)
+        - ERD(Entity Relatioonship Diagram) - 개체 관계 다이어그램
+            - PK(Primary Key) - 기본키. 중복이 안되고 빠진 데이터가 하나도 없다. UNIQUE, NOT NULL
+            - FK(Foreign Key) - 외래키. 다른 엔티티(테이블)의 PK. 두 엔티티의 관계를 연결해주는 값.
+            - Relationship - 부모 엔티티와 자식 엔티티간의 연관, 부모 1: 자식N을 가질 수 있음.
+        - 카티션곱
+            - 두 개 이상의 테이블의 조건과 관계없이 연결할 수 있는 경우의 수를 모두 만든 데이터
+            - 조인 이전에 데이터 확인 - 실무에서 카티션곱으로 데이터를 사용할 일이 절대! 없음.
+        - 내부조인
+            - 다중 테이블에서 보통 PK와 FK간의 일치하는 데이터를 한꺼번에 출력하기 위한 방법
+            - 관계형 데이터베이스에서 필수로 사용해야 함.
+            - INNER JOIN 또는 오라클 간결문법 사용
+        - 외부조인
+             - PK와 FK간 일치하지 않는 데이터도 출력하고자 할 떄 사용하는 방법
+             - LEFT OUTER jOIN, RIGHT OUTER JOIN 또는 오라클 간결문법 사용
+    - DOL
+        - CREATE - TABLE, VIEW, PROCEDURE, FUNCTION, 개체를 생성하는 키워드드
+        ```sql
+        CREATE TABLE 테이블명 (
+            첫번째_컬럼 타입형 제약조건, 
+            두번째_컬럼 타입형 제약조건, 
+            ...
+            마지막_컬럼 타입형 제약조건
+            [,
+            기본키, 외래키 등의 옵션...
+            ]
+        );
+        ```
+        - ALTER - 개체 중 테이블에서 수정이 필요할 때 사용하는 키워드
+            ```sql
+            ALTER TABLE 테이블명 ADD (컬럼명 타입형 제약조건);
+            ALTER TABLE 테이블명 MODIFY (컬럼명 타입형 제약조건);
+            ```
+        - DROP - 개체 삭제시 사용하는 키워드
+            ```sql
+            DROP TABLE 테이블명 purge; -- purge - 휴지통
+            ```
+        - TRUNCATE - 테이블 완전 초기화 키워드
+            ```sql 
+            TRUNCATE TABLE 테이블명;
+            ```
+
+    ## 4일차
+    - DML
+        - INSERT
+        - UPDATE
+        - DELETE
+    - 제약조건
+    - INDEX
+    - VIEW
+    - 서브쿼리
+    - 시퀀스
