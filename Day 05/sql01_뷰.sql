@@ -2,7 +2,7 @@
  * VIEW
 **/
 -- sysdba로 실행해야함. 
-
+-- ROLE CONNECT, RESOURCE는 부여했지만, 
 GRANT CREATE VIEW TO sampleuser;
 --
 SELECT * FROM emp2;
@@ -49,3 +49,5 @@ AS
 	SELECT e.empno, e.name, e.deptno, d.dname
 	  FROM emp2 e, dept2 d
 	 WHERE e.deptno = d.dcode;
+
+COMMIT;
