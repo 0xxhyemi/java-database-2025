@@ -51,7 +51,7 @@ SELECT COUNT(ID1)
 HAVING count(ID1) > 1;
 
 SELECT *
-  FROM sample_t; WHERE ID1 = 10000000;
+  FROM sample_t WHERE ID1 = 10000000;
 
 -- 검색
 SELECT *
@@ -59,12 +59,27 @@ SELECT *
  WHERE ID1 IN (976453, 934564, 174555, 6785, 146789,897554);
 
 SELECT *
+  FROM SAMPLE_T;
+
+-- sample_t에 PK추가
+ALTER TABLE sample_t ADD PRIMARY KEY(id1);
+-- 인덱스 테이블 생성으로 30초정도 시간 소요
+
+-- date1번에서 조회
+SELECT *
   FROM sample_t
- WHERE date3 BETWEEN 
+ WHERE date1 = '20171206';
+-- 0.45초 소요 인덱스 생성 후는 0.019초 소요
 
+CREATE INDEX idx_date1 ON sample_t(date1);
 
+-- test3 컬럼 값 조회
+SELECT *
+  FROM sample_t
+ WHERE test3 = 'A678';
 
-
+-- autocommit을 끄고나면 DDL, DML(select이외) 작업후 필히 commit;수행 후 파일 저장
+COMMIT;
 
 
 
