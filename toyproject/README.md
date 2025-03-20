@@ -31,11 +31,11 @@ Python GUI - Oracle연동 프로그램
 
 
 #### PyQt5 개발
-    1. PyQt 모듈 사용 윈앱 만들기
-    2. 윈도우 기본설정 
-    3. PyQt 위젯 사용법(레이블, 버튼, ...)
-    4. 시그널(이벤트) 처리방법
-    5. QtDesigner로 화면디자인, PyQt와 연동
+1. PyQt 모듈 사용 윈앱 만들기
+2. 윈도우 기본설정 
+3. PyQt 위젯 사용법(레이블, 버튼, ...)
+4. 시그널(이벤트) 처리방법
+5. QtDesigner로 화면디자인, PyQt와 연동
 
     <img src="../image/db006.png" width="600">
 
@@ -82,24 +82,27 @@ Python GUI - Oracle연동 프로그램
     - 오라클 모듈
         - oracledb - Oracle 최신버전에 매칭
         - **cx_Oracle** - 구버전까지 잘 됨
-    - [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/ko/visual-cpp-build-tools/) 필요     
-    - Visual Studio Installer 실행
-        - [x] MSVC v1xx -VS 20XX C++ x64/x86 별도도구
-        - [x] C++ CMake Tools for Window
-        - [x] Windows 10 SDK(10.0.xxxxx)
-        - 설치
-    - 콘솔에서 `> pip install cx_Oracle`
-    - 콘솔 오라클연동: [python](./)
-        - DPI-1047 오류 발생
-        - 64-bit Oracle Client Library사 OS에 설치되지 않았기 때문에 발생하는 현상
+    
+    - [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/ko/visual-cpp-build-tools/) 필요
+        - Visual Studio Installer 실행
+        - 개별 구성요소에서 아래 요소 선택
+            - [x] MSVC v1XX - VS 20XX C++ x64/x86 빌드도구
+            - [x] C++ CMake Tools for Window
+            - [x] Windows 10 SDK(10.0.xxxxx)
+        - 설치 
+    - 콜솔에서 `> pip install cx_Oracle`
+    - 콘솔 오라클연동 : [python](./)
+        - DPI-1047오류 발생
+        - 64-bit Oracle Client Library가 OS에 설치되지 않았기 때문에 발생하는 현상
         - 아래 사이트에서 버전에 맞는 Oracle Client를 다운로드
         - https://www.oracle.com/kr/database/technologies/instant-client/winx64-64-downloads.html
         - 11g 다운로드
-        - 압축해제(C:\Dev\Tool\instantclient_11_2), 시스템 정보 Path 등록
+        - 압축해제(C:\DEV\Tool\instantclient_11_2), 시스템정보 Path 등록
         - 재부팅!
     - 콘솔 테스트 결과
-
-            <img src ="../image/db008.png" width="600">
+    
+        <img src="../image/db008.png" width="600">
 
 - QtDesigner로 화면 구성
+    
 - PyQt로 Oracle 연동 CRUD 구현
