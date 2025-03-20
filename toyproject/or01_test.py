@@ -5,7 +5,7 @@ import cx_Oracle as oci
 
 # DB 연결 설정변수 선언
 sid = 'XE'
-host = '127.0.0.1' # localhost와 동일
+host = '127.0.0.1' # 127.0.0.1 localhost와 동일
 # DB 서버가 외부에 있다면. oracle.pknuprd.net 또는 211.12.119.45식으로 입력 필요
 port = 1521
 username = 'madang'
@@ -19,8 +19,8 @@ query = 'SELECT * FROM Students'  # 파이썬에서 쿼리호출시는 ; 삭제
 cursor.execute(query)
 
 # 불러온 데이터처리
-for i, item in enumerate(cursor, start = 1):
-    print(item)
+for i, (std_id, std_name, std_mobile, std_regyear) in enumerate(cursor, start = 1):
+    print(std_id, std_name, std_mobile, std_regyear)
     
 cursor.close()
 conn.close()
