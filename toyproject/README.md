@@ -43,10 +43,26 @@ Python GUI - Oracle연동 프로그램
 #### Oracle연동 GUI개발 시작
 - 오라클 Python연동 DB(스키마) 생성
     ```sql
+    -- sys(sysdba)로 작업
+    -- madang 스키마, 사용자 생성
+    CREATE USER madang IDENTIFIED BY madang;
+
+    -- 권한 설정
+    GRANT CONNECT, resource TO madang;
+
+    -- madang으로 사용 스키마 변경
+    -- 테이블 Student 생성
+    CREATE TABLE Students (
+        std_id 		NUMBER 			PRIMARY KEY,
+        std_name 	varchar2(100) 	NOT NULL,
+        std_mobile 	varchar2(15) 	NULL,
+        std_regyear	number(4, 0)	NOT NULL	
+    );
+
     -- Students용 시퀀스 생성
     CREATE SEQUENCE SEQ_STUDENT
-        INCREMENT BY 1				-- 숫자를 1씩 증가
-        START WITH 1;               -- 1부터 숫자가 증가됨
+        INCREMENT BY 1		-- 숫자를 1씩 증가
+        START WITH 1;		-- 1부터 숫자가 증가됨
     ```
 - Student 테이블 생성, 더미데이터 추가
     ```sql
@@ -56,17 +72,34 @@ Python GUI - Oracle연동 프로그램
 
     -- 더미데이터 삽입
     INSERT INTO Students (std_id, std_name, std_mobile, std_regyear)
-    VALUES(SEQ_STUDENT.nextval, '홍길동', '010-9999-8888', 1997)
+    VALUES (SEQ_STUDENT.nextval, '홍길동', '010-9999-8888', 1997);
     INSERT INTO Students (std_id, std_name, std_mobile, std_regyear)
-    VALUES(SEQ_STUDENT.nextval, '홍길순', '010-9999-8877', 2000)
+    VALUES (SEQ_STUDENT.nextval, '홍길순', '010-9999-8877', 2000);
 
     COMMIT;
     ```
-- Python 오라클 연동 테스트
+- Python 오라클 연동 테스트 
     - 오라클 모듈
         - oracledb - Oracle 최신버전에 매칭
         - **cx_Oracle** - 구버전까지 잘 됨
+    - [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/ko/visual-cpp-build-tools/) 필요     
+    - Visual Studio Installer 실행
+        - [x] MSVC v1xx -VS 20XX C++ x64/x86 별도도구
+        - [x] C++ CMake Tools for Window
+        - [x] Windows 10 SDK(10.0.xxxxx)
+        - 설치
     - 콘솔에서 `> pip install cx_Oracle`
-    - [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/ko/visual-cpp-build-tools/) 필요
+    - 콘솔 오라클연동: [python](./)
+        - DPI-1047 오류 발생
+        - 64-bit Oracle Client Library사 OS에 설치되지 않았기 때문에 발생하는 현상
+        - 아래 사이트에서 버전에 맞는 Oracle Client를 다운로드
+        - https://www.oracle.com/kr/database/technologies/instant-client/winx64-64-downloads.html
+        - 11g 다운로드
+        - 압축해제(C:\Dev\Tool\instantclient_11_2), 시스템 정보 Path 등록
+        - 재부팅!
+    - 콘솔 테스트 결과
+
+            <img src ="../image/db008.png" width="600">
+
 - QtDesigner로 화면 구성
 - PyQt로 Oracle 연동 CRUD 구현
