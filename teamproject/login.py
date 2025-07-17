@@ -14,16 +14,12 @@ host = '210.119.14.71'  # 데이터베이스 호스트 주소 (외부 접속 시
 port = 1521  # 데이터베이스 포트 번호
 username = 'attendance'  # 데이터베이스 사용자 이름
 password = '12345'  # 데이터베이스 비밀번호
-basic_msg = 'OO고등학교 출결관리앱 v1.0'
 
 # 메인 윈도우 클래스 정의
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.initUI()  # UI 초기화 함수 호출
-
-        # 상태바에 메시지 추가
-        self.statusbar.showMessage(basic_msg)
 
     # UI 초기화 함수
     def initUI(self):
